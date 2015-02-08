@@ -2,34 +2,12 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 filetype plugin on
 
-" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-"" Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-"" Plugin 'L9'
-" Git plugin not hosted on GitHub
-"" Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"" Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-"" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Avoid a name conflict with L9
-"" Plugin 'user/L9', {'name': 'newL9'}
-
-Plugin 'fatih/vim-go'
 Plugin 'bling/vim-airline'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
@@ -43,13 +21,12 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'elzr/vim-json'
 Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/syntastic'
+Plugin 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
+Plugin 'fatih/molokai'
+Plugin 'fatih/vim-go'
 
-" All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
 " Brief help
 " :PluginList       - lists configured plugins
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
@@ -59,15 +36,26 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-syntax on
+" speed up syntax highlighting
+set nocursorcolumn
+set nocursorline
+syntax sync minlines=256
+set synmaxcol=128
+set t_Co=256
+
+syntax enable
+set background=dark
+let g:molokai_original=1
+colorscheme molokai
+
+"set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+
+" ==================== Airline ====================
+let g:airline_left_sep  = ''
+let g:airline_right_sep = ''
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='luna'
 set laststatus=2
-set t_Co=256
-
-let g:solarized_termcolors=256
-set background=dark
-colorscheme solarized
 
 " nerdtree
 map <C-n> :NERDTreeToggle<CR>
@@ -82,13 +70,19 @@ set timeout timeoutlen=1500
 " majutsushi/tagbar
 nmap <F8> :TagbarToggle<CR>
 
-" scrooloose/syntastic
+" syntastic
 let g:syntastic_jslint_checkers=['jslint']
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 
 " vim-multiple-cursors 
+" Default mapping
 let g:multi_cursor_next_key='<C-d>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
+
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+
