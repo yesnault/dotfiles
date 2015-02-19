@@ -5,7 +5,7 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
-Plugin 'fatih/vim-go' 
+Plugin 'fatih/vim-go'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'scrooloose/nerdcommenter'
@@ -35,7 +35,7 @@ filetype plugin indent on    " required
 
 "
 " Settings
-" 
+"
 set noerrorbells                " No beeps
 set number                      " Show line numbers
 set backspace=indent,eol,start  " Makes backspace key more powerful.
@@ -54,7 +54,7 @@ set laststatus=2
 set fileformats=unix,dos,mac    " Prefer Unix over Windows over OS 9 formats
 
 "http://stackoverflow.com/questions/20186975/vim-mac-how-to-copy-to-clipboard-without-pbcopy
-set clipboard^=unnamed 
+set clipboard^=unnamed
 set clipboard^=unnamedplus
 
 set noshowmatch                 " Do not show matching brackets by flickering
@@ -64,7 +64,7 @@ set incsearch                   " Shows the match while typing
 set hlsearch                    " Highlight found searches
 set ignorecase                  " Search case insensitive...
 set smartcase                   " ... but not when search pattern contains upper case characters
-set ttyfast 
+set ttyfast
 
 " speed up syntax highlighting
 set nocursorcolumn
@@ -308,7 +308,7 @@ vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR><c-o>
 " object of the given type.  These don't necessarily have to be in the current
 " line.
 "
-" Currently works for (, [, {, and their shortcuts b, r, B. 
+" Currently works for (, [, {, and their shortcuts b, r, B.
 "
 " Next kind of works for ' and " as long as there are no escaped versions of
 " them in the string (TODO: fix that).  Last is currently broken for quotes
@@ -375,7 +375,7 @@ function! s:NextTextObject(motion, dir)
         let open = ''
         let close = ''
 
-        if c ==# "(" 
+        if c ==# "("
             let open = "("
             let close = ")"
         elseif c ==# "{"
@@ -440,8 +440,8 @@ endfunction
 " ----------------------------------------- "
 
 au BufNewFile,BufRead *.vim setlocal noet ts=2 sw=2 sts=2
-au BufNewFile,BufRead *.txt setlocal noet ts=4 sw=4 
-au BufNewFile,BufRead *.md setlocal noet ts=4 sw=4 
+au BufNewFile,BufRead *.txt setlocal noet ts=4 sw=4
+au BufNewFile,BufRead *.md setlocal noet ts=4 sw=4
 
 augroup filetypedetect
     au BufNewFile,BufRead .tmux.conf*,tmux.conf* setf tmux
@@ -451,7 +451,7 @@ augroup END
 au FileType nginx setlocal noet ts=4 sw=4 sts=4
 
 " Go settings
-au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
+au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4 expandtab
 " au BufNewFile,BufRead *.go setlocal noet ts=8 sw=8 sts=8
 
 " coffeescript settings
@@ -508,7 +508,7 @@ com! JSONFormat %!python -m json.tool
 " ----------------------------------------- "
 
 " ==================== CtrlP ====================
-let g:ctrlp_cmd = 'CtrlPMRU'		
+let g:ctrlp_cmd = 'CtrlPMRU'
 let g:ctrlp_match_func  = {'match' : 'matcher#cmatch'}
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 let g:ctrlp_working_path_mode = 'ra'
@@ -592,6 +592,7 @@ au FileType go nmap <Leader>t <Plug>(go-def-tab)
 au FileType go nmap <Leader>i <Plug>(go-info)
 
 au FileType go nmap  <leader>r  <Plug>(go-run)
+au FileType go nmap  <leader>n  <Plug>(go-install)
 au FileType go nmap  <leader>b  <Plug>(go-build)
 
 au FileType go nmap <Leader>d <Plug>(go-doc)
@@ -645,7 +646,7 @@ map <C-n> :NERDTreeToggle<CR>
 "endfunction
 
 " For toggling
-"noremap <Leader>n :<C-u>call g:NerdTreeFindToggle()<cr> 
+"noremap <Leader>n :<C-u>call g:NerdTreeFindToggle()<cr>
 
 " For refreshing current file and showing current dir
 "noremap <Leader>j :NERDTreeFind<cr>
@@ -657,7 +658,7 @@ let g:syntastic_jslint_checkers=['jslint']
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 
-" vim-multiple-cursors 
+" vim-multiple-cursors
 " Default mapping
 let g:multi_cursor_next_key='<C-d>'
 let g:multi_cursor_prev_key='<C-p>'
