@@ -1,8 +1,7 @@
 
-export PATH=$PATH:~/bin
-export PATH=$PATH:/usr/local/go/bin
-export GOPATH=~/go
-export PATH=$PATH:$GOPATH/bin
+export GOROOT=~/go
+export GOPATH=~/dev/go
+export PATH=~/usr/bin:~/.local/bin:/usr/local/bin:$GOROOT/bin:$GOPATH/bin:$PATH
 
 #....
 
